@@ -3,6 +3,7 @@ import { Counter } from "./componet/Counter/Counter";
 import { Department } from "./componet/Department";
 import { Greeting } from "./componet/Greeting";
 import ProductList from "./componet/ProductList";
+import { UserProfile } from "./componet/UserProfile/UserProfile";
 
 export type EmployeeData = {
   id: number;
@@ -28,6 +29,7 @@ function App() {
       {/* <h2>Company Data</h2>
       <Department employee={empData} /> */}
       <Counter />
+      <UserProfile/>
     </>
   );
 }

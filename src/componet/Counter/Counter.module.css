@@ -14,7 +14,8 @@
   background-color: darkblue;
 }
 
-.divStye{
-    padding: "20px";
+.divStye {
+    padding: 20px; /* ✅ correct */
     font-family: Arial, Helvetica, sans-serif;
 }
+
