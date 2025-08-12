@@ -4,11 +4,11 @@ import { Employee } from "./Employee";
 type TeamProps = {
   employee: EmployeeData;
 };
-export const Team = (props: TeamProps) => {
+export const Team = ({ employee }: TeamProps) => {
   return (
     <>
-      <h3>Team : {props.employee.team}</h3>
-      <Employee employee={props.employee} />
+      <h3>Team : {employee.team}</h3>
+      <Employee employee={employee} />
     </>
   );
 };

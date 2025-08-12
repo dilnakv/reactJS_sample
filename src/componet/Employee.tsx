@@ -3,13 +3,13 @@ import type { EmployeeData } from "../App";
 type EmployeeProps = {
   employee: EmployeeData;
 };
-export const Employee = (props: EmployeeProps) => {
+export const Employee = ({ employee }: EmployeeProps) => {
   return (
     <>
       <h4>Employee Details:</h4>
-      <p>ID: {props.employee.id}</p>
-      <p>Name: {props.employee.name}</p>
-      <p>Position: {props.employee.position}</p>
+      <p>ID: {employee.id}</p>
+      <p>Name: {employee.name}</p>
+      <p>Position: {employee.position}</p>
     </>
   );
 };
