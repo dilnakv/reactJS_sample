@@ -1,9 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from './Counter.module.css'
 
 export const Counter = () => {
     const [count, setCount] = useState(0);
 
+    useEffect(() =>{
+      console.log("Component mounted");
+    },[]);
+
+    useEffect(() =>{
+      console.log("Count updated");
+      document.title = `Count: ${count}`;
+    },[count]);
+    
     const handleIncrement = () => {
         setCount(count + 1);
     }

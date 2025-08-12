@@ -1,8 +1,10 @@
 import "./App.css";
 import { Counter } from "./componet/Counter/Counter";
+import { CurrentTime } from "./componet/CurrentTime";
 import { Department } from "./componet/Department";
 import { Greeting } from "./componet/Greeting";
 import ProductList from "./componet/ProductList";
+import { ProductListApi } from "./componet/ProductListApi";
 import { UserProfile } from "./componet/UserProfile/UserProfile";
 
 export type EmployeeData = {
@@ -28,8 +30,10 @@ function App() {
       <ProductList/> */}
       {/* <h2>Company Data</h2>
       <Department employee={empData} /> */}
-      <Counter />
-      <UserProfile/>
+      {/* <Counter /> */}
+      {/* <UserProfile/> */}
+      <ProductListApi/>
+      {/* <CurrentTime/> */}
     </>
   );
 }
