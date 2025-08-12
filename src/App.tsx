@@ -1,4 +1,5 @@
 import "./App.css";
+import { Counter } from "./componet/Counter/Counter";
 import { Department } from "./componet/Department";
 import { Greeting } from "./componet/Greeting";
 import ProductList from "./componet/ProductList";
@@ -24,8 +25,9 @@ function App() {
       {/* <Greeting name={"Dilna"} /> */}
       {/* <h2>Product List</h2>
       <ProductList/> */}
-      <h2>Company Data</h2>
-      <Department employee={empData} />
+      {/* <h2>Company Data</h2>
+      <Department employee={empData} /> */}
+      <Counter />
     </>
   );
 }
