@@ -8,7 +8,7 @@ export const Counter = () => {
         setCount(count + 1);
     }
     return(
-    <div style={{ padding: "20px", fontFamily: "Arial" }}>
+    <div className='divStyle'>
       <p>Count: {count}</p>
       <button className = 'button' onClick={handleIncrement}> + </button>
     </div>
