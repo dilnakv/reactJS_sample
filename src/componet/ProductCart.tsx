@@ -36,6 +36,7 @@ export default function ProductCart() {
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(1);
 
+  
   const handleAdd = () => {
     if (name.trim()) {
       dispatch({ type: "ADD", name, quantity });
