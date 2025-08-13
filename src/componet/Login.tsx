@@ -3,8 +3,10 @@ import React, { useRef, useState } from "react";
 export const Login = () => {
   //   const usernameRef = useRef<HTMLInputElement>(null);
   //   const passwordRef = useRef<HTMLInputElement>(null);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+   const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  });
   const [message, setMessage] = useState<string>("");
   const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
 
@@ -14,7 +16,7 @@ export const Login = () => {
     // const username = usernameRef.current?.value || "";
     // const password = passwordRef.current?.value || "";
 
-    if (username === "admin" && password === "xminds@123") {
+    if (formData.username === "admin" && formData.password === "xminds@123") {
       setMessage("Login Successful");
       setIsSuccess(true);
     } else {
@@ -32,8 +34,8 @@ export const Login = () => {
           {/* <input type="text" ref={usernameRef} style={{ width: 200 }} /> */}
           <input
             type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={formData.username}
+            onChange={(e) => setFormData({...formData, username: e.target.value})}
             style={{ width: 200 }}
           />
         </div>
@@ -42,8 +44,8 @@ export const Login = () => {
           {/* <input type="password" ref={passwordRef} style={{ width: 200 }} /> */}
           <input
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={formData.password}
+            onChange={(e) => setFormData({...formData, password: e.target.value})}
             style={{ width: 200 }}
           />
         </div>
