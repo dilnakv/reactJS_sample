@@ -53,7 +53,6 @@ export default function ProductCart() {
     <div style={{ padding: "20px", maxWidth: "400px" }}>
       <h2>Shopping Cart</h2>
 
-      {/* Input Row */}
       <div style={{ display: "flex", gap: "8px", marginBottom: "10px" }}>
         <div style={{ flex: 1 }}>
           <label>Product Name</label>
@@ -77,7 +76,6 @@ export default function ProductCart() {
 
       <button onClick={handleAdd}>Add Item</button>
 
-      {/* Cart List */}
       <ul style={{ marginTop: "20px", padding: 0, listStyle: "none" }}>
         {cart.map((item) => (
           <li
