@@ -4,7 +4,7 @@ import { CurrentTime } from "./componet/CurrentTime";
 import { Department } from "./componet/Department";
 import { Greeting } from "./componet/Greeting";
 import { Login } from "./componet/Login";
-import { ProductCart } from "./componet/ProductCart";
+import ProductCart from "./componet/ProductCart";
 import ProductList from "./componet/ProductList";
 import { ProductListApi } from "./componet/ProductListApi";
 import { UserProfile } from "./componet/UserProfile/UserProfile";
