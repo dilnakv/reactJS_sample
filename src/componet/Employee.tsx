@@ -1,9 +1,9 @@
-import type { EmployeeData } from "../App";
+import { useEmployee } from "../context/EmployeeContext";
 
-type EmployeeProps = {
-  employee: EmployeeData;
-};
-export const Employee = ({ employee }: EmployeeProps) => {
+export const Employee = () => {
+  const employee = useEmployee();
+
+  if (!employee) return null;
   return (
     <>
       <h4>Employee Details:</h4>

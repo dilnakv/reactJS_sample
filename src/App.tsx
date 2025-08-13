@@ -7,6 +7,7 @@ import { Login } from "./componet/Login";
 import ProductList from "./componet/ProductList";
 import { ProductListApi } from "./componet/ProductListApi";
 import { UserProfile } from "./componet/UserProfile/UserProfile";
+import { EmployeeContext } from "./context/EmployeeContext";
 
 export type EmployeeData = {
   id: number;
@@ -25,18 +26,23 @@ function App() {
     team: "Mobile App",
   };
   return (
-    <>
-      {/* <Greeting name={"Dilna"} /> */}
-      {/* <h2>Product List</h2>
-      <ProductList/> */}
-      {/* <h2>Company Data</h2>
-      <Department employee={empData} /> */}
-      {/* <Counter /> */}
-      {/* <UserProfile/> */}
-      {/* <ProductListApi/> */}
-      {/* <CurrentTime/> */}
-      <Login/>
-    </>
+    // <>
+    //   {/* <Greeting name={"Dilna"} /> */}
+    //   {/* <h2>Product List</h2>
+    //   <ProductList/> */}
+    //   <h2>Company Data</h2>
+    //   <Department />
+    //   {/* <Counter /> */}
+    //   {/* <UserProfile/> */}
+    //   {/* <ProductListApi/> */}
+    //   {/* <CurrentTime/> */}
+    //   <Login/>
+    //   </>
+
+    <EmployeeContext.Provider value={empData}>
+      <h2>Company Data</h2>
+      <Department />
+    </EmployeeContext.Provider>
   );
 }
 
