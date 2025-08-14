@@ -1,3 +1,4 @@
+import React from "react";
 import type { ProductType } from "./ProductListUseCallback";
 
 // Product component
@@ -6,7 +7,8 @@ interface ProductProps {
   onAddToCart: (id: number) => void;
 }
 
-export const ProductCard = (props: ProductProps) => {
+export const ProductCard = React.memo((props: ProductProps) => {
+
   return (
     <div
       style={{
@@ -18,7 +20,9 @@ export const ProductCard = (props: ProductProps) => {
     >
       <h3>{props.product.name}</h3>
       <p>Price: ${props.product.price}</p>
-      <button onClick={() => props.onAddToCart(props.product.id)}>Add to Cart</button>
+      <button onClick={() => props.onAddToCart(props.product.id)}>
+        Add to Cart
+      </button>
     </div>
   );
-};
+});
