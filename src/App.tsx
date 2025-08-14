@@ -12,6 +12,7 @@ import { UserProfile } from "./componet/UserProfile/UserProfile";
 import { EmployeeContext } from "./context/EmployeeContext";
 import { Chat } from "./componet/Chat";
 import { UserContext } from "./context/UserContext";
+import ProductListUseCallback from "./componet/ProductListUseCallback";
 
 export type EmployeeData = {
   id: number;
@@ -37,11 +38,12 @@ function App() {
       <Department />
       <Counter />
       <UserProfile /> */}
-      <ProductListApi />
+      {/* <ProductListApi /> */}
       {/* <FormComponent/> */}
       {/* <CurrentTime /> */}
-      <Login />
+      {/* <Login /> */}
       {/* <ProductCart/> */}
+      <ProductListUseCallback/>
     </>
 
     // <EmployeeContext.Provider value={empData}>
