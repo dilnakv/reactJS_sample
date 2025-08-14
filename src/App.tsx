@@ -29,27 +29,28 @@ function App() {
     team: "Mobile App",
   };
   return (
-    // <>
-    //   {/* <Greeting name={"Dilna"} />
-    //   <h2>Product List</h2>
-    //   <ProductList />
-    //   <h2>Company Data</h2>
-    //   <Department />
-    //   <Counter />
-    //   <UserProfile />
-    //   <ProductListApi />
-    //   <CurrentTime />
-    //   <Login /> */}
-    //   {/* <ProductCart/> */}
-    // </>
+    <>
+      {/* <Greeting name={"Dilna"} />
+      <h2>Product List</h2>
+      <ProductList />
+      <h2>Company Data</h2>
+      <Department />
+      <Counter />
+      <UserProfile /> */}
+      <ProductListApi />
+      {/* <FormComponent/> */}
+      {/* <CurrentTime /> */}
+      <Login />
+      {/* <ProductCart/> */}
+    </>
 
     // <EmployeeContext.Provider value={empData}>
     //   <h2>Company Data</h2>
     //   <Department />
     // </EmployeeContext.Provider>
-       <UserContext.Provider value={{ username: "Dilna" }}>
-      <Chat />
-    </UserContext.Provider>
+    //    <UserContext.Provider value={{ username: "Dilna" }}>
+    //   <Chat />
+    // </UserContext.Provider>
   );
 }
 

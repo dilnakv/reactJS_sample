@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import useFetch from "./hook/useFetch";
 
 type Product = {
   id: number;
@@ -14,25 +15,36 @@ type Product = {
 };
 
 export const ProductListApi = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  // const [products, setProducts] = useState<Product[]>([]);
+  // const [loading, setLoading] = useState<boolean>(true);
 
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((data: Product[]) => {
-        setProducts(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching products:", error);
-        setLoading(false);
-      });
-  }, []); // empty dependency → runs only once on mount
+  // useEffect(() => {
+  //   fetch("https://fakestoreapi.com/products")
+  //     .then((res) => res.json())
+  //     .then((data: Product[]) => {
+  //       setProducts(data);
+  //       setLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching products:", error);
+  //       setLoading(false);
+  //     });
+  // }, []); // empty dependency → runs only once on mount
 
+  const { data: products, loading, error } = useFetch<Product[]>(
+    "https://fakestoreapi.com/products"
+  );
   if (loading) {
     return <p>Loading products...</p>;
   }
+
+  if (error) {
+    return <p style={{ color: "red" }}>Error: {error}</p>;
+  }
+
+if (!products) {
+  return <p>Loading...</p>;
+}
 
   return (
     <div style={{ padding: "20px", fontFamily: "'Garamond ', serif" }}>

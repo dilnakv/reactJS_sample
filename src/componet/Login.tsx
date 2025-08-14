@@ -1,12 +1,16 @@
 import React, { useRef, useState } from "react";
+import useFormInput from "./hook/useFormInput";
 
 export const Login = () => {
   //   const usernameRef = useRef<HTMLInputElement>(null);
   //   const passwordRef = useRef<HTMLInputElement>(null);
-   const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-  });
+//    const [formData, setFormData] = useState({
+//     username: "",
+//     password: "",
+//   });
+
+ const username = useFormInput("");
+  const password = useFormInput("");
   const [message, setMessage] = useState<string>("");
   const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
 
@@ -16,7 +20,8 @@ export const Login = () => {
     // const username = usernameRef.current?.value || "";
     // const password = passwordRef.current?.value || "";
 
-    if (formData.username === "admin" && formData.password === "xminds@123") {
+    // if (formData.username === "admin" && formData.password === "xminds@123") {
+    if (username.value === "admin" && password.value === "xminds@123") {
       setMessage("Login Successful");
       setIsSuccess(true);
     } else {
@@ -32,22 +37,24 @@ export const Login = () => {
         <div>
           <label>Username: </label>
           {/* <input type="text" ref={usernameRef} style={{ width: 200 }} /> */}
-          <input
+          {/* <input
             type="text"
             value={formData.username}
             onChange={(e) => setFormData({...formData, username: e.target.value})}
             style={{ width: 200 }}
-          />
+          /> */}
+           <input type="text" {...username} style={{ width: 200 }} />
         </div>
         <div style={{ marginTop: "10px" }}>
           <label>Password : </label>
           {/* <input type="password" ref={passwordRef} style={{ width: 200 }} /> */}
-          <input
+          {/* <input
             type="password"
             value={formData.password}
             onChange={(e) => setFormData({...formData, password: e.target.value})}
             style={{ width: 200 }}
-          />
+          /> */}
+          <input type="password" {...password} style={{ width: 200 }} />
         </div>
         <button
           type="submit"

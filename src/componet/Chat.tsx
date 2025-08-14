@@ -34,7 +34,6 @@ export const Chat = () => {
     <div
       style={{
         minWidth: 400,
-         margin: "5px 5px",
         border: "2px solid #0a0a0aff",
         borderRadius:20,
         display: "flex",
