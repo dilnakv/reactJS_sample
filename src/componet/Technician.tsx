@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import api from "../services/ApiService";
-import ApiService from "../services/ApiService";
+import { ApiService } from "../services/ApiService";
 
 interface Technician {
   id?: string;
@@ -12,18 +11,17 @@ interface Technician {
 }
 
 const TechnicianPage: React.FC = () => {
+    const api = ApiService();
   const [technicians, setTechnicians] = useState<Technician[]>([]);
   const [loading, setLoading] = useState(false);
 
-  // Single state for form
   const [form, setForm] = useState({
     id: "",
     firstName: "",
     lastName: "",
     email: "",
-    contactNUmber: "",
+    contactNumber: "",
   });
-
 
   // Fetch technicians
   const fetchTechnicians = async () => {
@@ -39,40 +37,42 @@ const TechnicianPage: React.FC = () => {
       setLoading(false);
     }
   };
+
   useEffect(() => {
     fetchTechnicians();
   }, []);
 
   // Handle input change
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   // Add or Update technician
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  try {
+      await api.post("/technician", form, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      console.log("✅ Technician added");
+
+    fetchTechnicians();
+    resetForm();
+  } catch (err) {
+    console.error("❌ Failed to save technician:", err);
+  }
+};
+
+
+  // Delete technician
+  const handleDelete = async (id?: string) => {
+    if (!id) return;
     try {
-      const formData = new FormData();
-      formData.append("firstName", form.firstName);
-      formData.append("lastName", form.lastName);
-      formData.append("email", form.email);
-      formData.append("contactNumber", form.contactNUmber);
-
-
-        // Add technician
-        await ApiService.post("/technician", formData, {
-          headers: { "Content-Type": "multipart/form-data" },
-        });
-        console.log("✅ Technician added");
- 
-
+      await api.delete("/technician", { params: { id } });
+      console.log("✅ Technician deleted");
       fetchTechnicians();
-      resetForm();
     } catch (err) {
-      console.error("❌ Failed to save technician:", err);
+      console.error("❌ Failed to delete technician:", err);
     }
   };
 
@@ -80,12 +80,11 @@ const TechnicianPage: React.FC = () => {
 
   // Reset form
   const resetForm = () => {
-    setForm({ id: "", firstName: "", lastName: "", email: "", contactNUmber: "" });
+    setForm({ id: "", firstName: "", lastName: "", email: "", contactNumber: "" });
   };
 
   return (
     <div style={{ padding: "20px" }}>
-      {/* Add/Edit Technician Form */}
       <h3>{"Add Technician"}</h3>
       <form
         onSubmit={handleSubmit}
@@ -120,20 +119,17 @@ const TechnicianPage: React.FC = () => {
         />
         <input
           type="text"
-          name="contactNUmber"
+          name="contactNumber"
           placeholder="Phone"
-          value={form.contactNUmber}
+          value={form.contactNumber}
           onChange={handleChange}
           required
           style={{ marginBottom: "10px" }}
         />
-        <button type="submit">
-          { "Add Technician"}
-        </button>
-      
+        <button type="submit">{form.id ? "Update Technician" : "Add Technician"}</button>
+       
       </form>
 
-      {/* Technician List */}
       <h2>Technician List</h2>
       {loading ? (
         <p>Loading...</p>
@@ -148,18 +144,11 @@ const TechnicianPage: React.FC = () => {
               borderRadius: "8px",
             }}
           >
-            <p>
-              <strong>Ref ID:</strong> {tech.refId}
-            </p>
-            <p>
-              <strong>Name:</strong> {tech.firstName} {tech.lastName}
-            </p>
-            <p>
-              <strong>Email:</strong> {tech.email}
-            </p>
-            <p>
-              <strong>Phone:</strong> {tech.contactNUmber}
-            </p>
+            <p><strong>Ref ID:</strong> {tech.refId}</p>
+            <p><strong>Name:</strong> {tech.firstName} {tech.lastName}</p>
+            <p><strong>Email:</strong> {tech.email}</p>
+            <p><strong>Phone:</strong> {tech.contactNUmber}</p>
+            <button onClick={() => handleDelete(tech.id)}>Delete</button>
           </div>
         ))
       )}

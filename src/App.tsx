@@ -15,6 +15,7 @@ import { UserContext } from "./context/UserContext";
 import ProductListUseCallback from "./componet/ProductListUseCallback";
 import { ForwardRefInput } from "./componet/ForwardRefInput";
 import TechnicianPage from "./componet/Technician";
+import { AuthProvider } from "./context/AuthContext";
 
 export type EmployeeData = {
   id: number;
@@ -48,7 +49,10 @@ function App() {
       {/* <ProductListUseCallback/> */}
       {/* <ForwardRefInput/> */}
       {/* <CrudExample/> */}
-      <TechnicianPage/>
+      <AuthProvider>
+        <TechnicianPage/>
+      </AuthProvider>
+      
     </>
 
     // <EmployeeContext.Provider value={empData}>
