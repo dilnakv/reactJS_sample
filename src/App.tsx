@@ -13,7 +13,8 @@ import { EmployeeContext } from "./context/EmployeeContext";
 import { Chat } from "./componet/Chat";
 import { UserContext } from "./context/UserContext";
 import ProductListUseCallback from "./componet/ProductListUseCallback";
-import { ForwardRefInput } from "./componet/forwardRefInput";
+import { ForwardRefInput } from "./componet/ForwardRefInput";
+import TechnicianPage from "./componet/Technician";
 
 export type EmployeeData = {
   id: number;
@@ -45,7 +46,9 @@ function App() {
       {/* <Login /> */}
       {/* <ProductCart/> */}
       {/* <ProductListUseCallback/> */}
-      <ForwardRefInput/>
+      {/* <ForwardRefInput/> */}
+      {/* <CrudExample/> */}
+      <TechnicianPage/>
     </>
 
     // <EmployeeContext.Provider value={empData}>
