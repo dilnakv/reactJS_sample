@@ -57,19 +57,18 @@ function App() {
       {/* <CrudExample/> */}
       <AuthProvider>
         <Routes>
-          <Route path='/' element ={<Login/>} />
-          <Route path='dashboard' element ={<ProductListApi/>} />
-          <Route path='technician' element ={<TechnicianPage/>} />
-          <Route path='chat' element ={<Chat/>} />
-          <Route path= '*' element={<NoMatch/>} />
-      <Route path="/products/:id" element={<Product/>}>
-           <Route index element={<ProductDetail />} />
-          <Route path="details" element={<ProductDetail />} />
-          <Route path="reviews" element={<ProductReview />} />
-        </Route>
+          <Route path="/" element={<Login />} />
+          <Route path="dashboard" element={<ProductListApi />} />
+          <Route path="technician" element={<TechnicianPage />} />
+          <Route path="chat" element={<Chat />} />
+          <Route path="*" element={<NoMatch />} />
+          <Route path="/products/:id" element={<Product />}>
+            <Route index element={<ProductDetail />} />
+            <Route path="details" element={<ProductDetail />} />
+            <Route path="reviews" element={<ProductReview />} />
+          </Route>
         </Routes>
       </AuthProvider>
-      
     </>
 
     // <EmployeeContext.Provider value={empData}>

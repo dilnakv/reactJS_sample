@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useMemo } from "react";
 import useFetch from "./hook/useFetch";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 type Product = {
   id: number;
@@ -17,43 +17,69 @@ type Product = {
 
 export const ProductListApi = () => {
   const navigate = useNavigate();
-  // const [products, setProducts] = useState<Product[]>([]);
-  // const [loading, setLoading] = useState<boolean>(true);
-
-  // useEffect(() => {
-  //   fetch("https://fakestoreapi.com/products")
-  //     .then((res) => res.json())
-  //     .then((data: Product[]) => {
-  //       setProducts(data);
-  //       setLoading(false);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching products:", error);
-  //       setLoading(false);
-  //     });
-  // }, []); // empty dependency → runs only once on mount
+  const [searchParams] = useSearchParams();
 
   const { data: products, loading, error } = useFetch<Product[]>(
     "https://fakestoreapi.com/products"
   );
-  if (loading) {
-    return <p>Loading products...</p>;
-  }
 
-  if (error) {
-    return <p style={{ color: "red" }}>Error: {error}</p>;
-  }
+  const category = searchParams.get("category"); // ex: "electronics"
+  const sort = searchParams.get("sort"); // ex: "price"
 
-if (!products) {
-  return <p>Loading...</p>;
-}
+  // Filter and sort using useMemo (so it recalculates only when inputs change)
+  const filteredProducts = useMemo(() => {
+    if (!products) return [];
+
+    let result = [...products];
+
+    // Filter by category
+    if (category) {
+      result = result.filter((p) => p.category === category);
+    }
+
+    // Sort
+    if (sort === "price") {
+      result.sort((a, b) => a.price - b.price);
+    } else if (sort === "rating") {
+      result.sort((a, b) => b.rating.rate - a.rating.rate);
+    }
+
+    return result;
+  }, [products, category, sort]);
+
+  if (loading) return <p>Loading products...</p>;
+  if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
+  if (!products) return <p>No products found</p>;
 
   return (
     <div style={{ padding: "20px", fontFamily: "'Garamond ', serif" }}>
-        
       <h2>Product List</h2>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "20px" }}>
-        {products.map((product) => (
+
+      {/* Controls to update query params */}
+      <div style={{ marginBottom: "20px" }}>
+        <button onClick={() => navigate("/dashboard?category=electronics")}>
+          Electronics
+        </button>
+        <button onClick={() => navigate("/dashboard?category=jewelery")}>
+          Jewelery
+        </button>
+        <button onClick={() => navigate("/dashboard?sort=price")}>
+          Sort by Price
+        </button>
+        <button onClick={() => navigate("/dashboard?sort=rating")}>
+          Sort by Rating
+        </button>
+        <button onClick={() => navigate("/dashboard")}>Clear Filters</button>
+      </div>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(4, 1fr)",
+          gap: "20px",
+        }}
+      >
+        {filteredProducts.map((product) => (
           <div
             key={product.id}
             style={{
@@ -63,16 +89,17 @@ if (!products) {
               textAlign: "center",
             }}
           >
-            <img src={product.image} alt={product.title} style={{ height: "100px", objectFit: "contain" }} />
+            <img
+              src={product.image}
+              alt={product.title}
+              style={{ height: "100px", objectFit: "contain" }}
+            />
             <h4>{product.title}</h4>
             <button onClick={() => navigate(`/products/${product.id}`)}>
               View Details
             </button>
-             {/* <p style={{ fontSize: "0.9rem", color: "#555" }}>
-              {product.description}
-            </p> */}
             <p>🏷️ ${product.price}</p>
-              <p>
+            <p>
               ⭐ {product.rating.rate} ({product.rating.count} reviews)
             </p>
           </div>
