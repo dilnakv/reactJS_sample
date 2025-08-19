@@ -1,7 +1,9 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { UserContext } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 export const Chat = () => {
+  const navigate = useNavigate();
   const { username } = useContext(UserContext); // Get current user
   const [messages, setMessages] = useState([
     { id: 1, user: "Krishna", text: "Hi there!" },
@@ -31,7 +33,24 @@ export const Chat = () => {
   };
 
   return (
-    <div
+    <>
+    <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "10px", marginTop: "10px" }}>
+  <button
+    onClick={() => navigate(-1)}
+    style={{
+      backgroundColor: "#007bff",
+      color: "white",
+      border: "none",
+      borderRadius: "5px",
+      padding: "8px 16px",
+      cursor: "pointer",
+    }}
+  >
+    Back
+  </button>
+</div>
+
+     <div
       style={{
         minWidth: 400,
         border: "2px solid #0a0a0aff",
@@ -117,6 +136,7 @@ export const Chat = () => {
           Send
         </button>
       </div>
-    </div>
+    </div></>
+   
   );
 };

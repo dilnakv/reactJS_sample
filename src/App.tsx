@@ -52,9 +52,10 @@ function App() {
       {/* <ForwardRefInput/> */}
       {/* <CrudExample/> */}
       <AuthProvider>
-        <Navbar/>
+        {/* <Navbar/> */}
         <Routes>
-          <Route path='/' element ={<ProductListApi/>} />
+          <Route path='/' element ={<Login/>} />
+          <Route path='dashboard' element ={<ProductListApi/>} />
           <Route path='technician' element ={<TechnicianPage/>} />
           <Route path='chat' element ={<Chat/>} />
         </Routes>

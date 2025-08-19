@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import useFormInput from "./hook/useFormInput";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   //   const usernameRef = useRef<HTMLInputElement>(null);
@@ -13,6 +14,7 @@ export const Login = () => {
   const password = useFormInput("");
   const [message, setMessage] = useState<string>("");
   const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,6 +26,8 @@ export const Login = () => {
     if (username.value === "admin" && password.value === "xminds@123") {
       setMessage("Login Successful");
       setIsSuccess(true);
+      navigate('/dashboard');
+
     } else {
       setMessage("Login Failed");
       setIsSuccess(false);

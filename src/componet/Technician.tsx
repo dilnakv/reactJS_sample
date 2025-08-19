@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ApiService } from "../services/ApiService";
-import { useNavigate } from "react-router-dom";
+import { replace, useNavigate } from "react-router-dom";
 
 interface Technician {
   id?: string;
@@ -87,7 +87,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 
   return (
     <div style={{ padding: "20px" }}>
-       <button onClick={() => navigate('/chat')}>Chat</button>
+       <button onClick={() => navigate('/chat',{replace: true})}>Chat</button>
       <h3>{"Add Technician"}</h3>
      
       <form
