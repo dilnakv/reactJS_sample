@@ -6,7 +6,7 @@ type InputFieldProps = {
 
 const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
   (props , ref) => {
-    return <input ref={ref} placeholder={props.placeholder} {...props} />;
+    return <input ref={ref}  {...props} />;
   }
 );
 

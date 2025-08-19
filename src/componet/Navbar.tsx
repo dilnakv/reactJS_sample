@@ -9,7 +9,7 @@ export const Navbar = () =>{
     }
     return(
         <nav>
-            <NavLink style={navLinkStyle} to = '/'>Product List</NavLink>
+            <NavLink style={navLinkStyle} to = '/dashboard'>Product List</NavLink>
             <NavLink style={navLinkStyle} to = '/technician'>Technician</NavLink>
         </nav>
     );
