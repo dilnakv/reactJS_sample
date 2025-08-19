@@ -16,6 +16,8 @@ import ProductListUseCallback from "./componet/ProductListUseCallback";
 import { ForwardRefInput } from "./componet/ForwardRefInput";
 import TechnicianPage from "./componet/Technician";
 import { AuthProvider } from "./context/AuthContext";
+import { Route, Routes } from "react-router-dom";
+import { Navbar } from "./componet/Navbar";
 
 export type EmployeeData = {
   id: number;
@@ -50,7 +52,13 @@ function App() {
       {/* <ForwardRefInput/> */}
       {/* <CrudExample/> */}
       <AuthProvider>
-        <TechnicianPage/>
+        <Navbar/>
+        <Routes>
+          <Route path='/' element ={<ProductListApi/>} />
+          <Route path='technician' element ={<TechnicianPage/>} />
+          <Route path='chat' element ={<Chat/>} />
+        </Routes>
+        {/* <TechnicianPage/> */}
       </AuthProvider>
       
     </>

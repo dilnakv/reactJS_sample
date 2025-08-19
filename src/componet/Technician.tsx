@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ApiService } from "../services/ApiService";
+import { useNavigate } from "react-router-dom";
 
 interface Technician {
   id?: string;
@@ -11,9 +12,10 @@ interface Technician {
 }
 
 const TechnicianPage: React.FC = () => {
-    const api = ApiService();
+  const api = ApiService();
   const [technicians, setTechnicians] = useState<Technician[]>([]);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const [form, setForm] = useState({
     id: "",
@@ -85,7 +87,9 @@ const handleSubmit = async (e: React.FormEvent) => {
 
   return (
     <div style={{ padding: "20px" }}>
+       <button onClick={() => navigate('/chat')}>Chat</button>
       <h3>{"Add Technician"}</h3>
+     
       <form
         onSubmit={handleSubmit}
         style={{ display: "flex", flexDirection: "column", maxWidth: "300px" }}
