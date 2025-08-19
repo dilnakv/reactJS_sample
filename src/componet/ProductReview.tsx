@@ -9,23 +9,10 @@ interface Review {
 
 const ProductReview: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const [reviews, setReviews] = useState<Review[]>([]);
-
-  useEffect(() => {
-    if (id) {
-      // Example: replace with your API endpoint
-      axios.get(`https://fakestoreapi.com/products/${id}/reviews`)
-        .then((res) => setReviews(res.data))
-        .catch(() => {
-          // fallback hardcoded reviews if API not available
-          setReviews([
-            { id: 1, message: "Great product, loved it!" },
+  const [reviews, setReviews] = useState<Review[]>([{ id: 1, message: "Great product, loved it!" },
             { id: 2, message: "Quality could be better." },
-            { id: 3, message: "Worth the price 👍" },
-          ]);
-        });
-    }
-  }, [id]);
+            { id: 3, message: "Worth the price 👍" },]);
+
 
   return (
     <div>
