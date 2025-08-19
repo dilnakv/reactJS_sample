@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import useFetch from "./hook/useFetch";
+import { useNavigate } from "react-router-dom";
 
 type Product = {
   id: number;
@@ -15,6 +16,7 @@ type Product = {
 };
 
 export const ProductListApi = () => {
+  const navigate = useNavigate();
   // const [products, setProducts] = useState<Product[]>([]);
   // const [loading, setLoading] = useState<boolean>(true);
 
@@ -48,6 +50,7 @@ if (!products) {
 
   return (
     <div style={{ padding: "20px", fontFamily: "'Garamond ', serif" }}>
+        
       <h2>Product List</h2>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "20px" }}>
         {products.map((product) => (
@@ -62,6 +65,9 @@ if (!products) {
           >
             <img src={product.image} alt={product.title} style={{ height: "100px", objectFit: "contain" }} />
             <h4>{product.title}</h4>
+            <button onClick={() => navigate(`/products/${product.id}`)}>
+              View Details
+            </button>
              {/* <p style={{ fontSize: "0.9rem", color: "#555" }}>
               {product.description}
             </p> */}

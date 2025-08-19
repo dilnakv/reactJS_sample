@@ -18,6 +18,11 @@ import TechnicianPage from "./componet/Technician";
 import { AuthProvider } from "./context/AuthContext";
 import { Route, Routes } from "react-router-dom";
 import { Navbar } from "./componet/Navbar";
+import { NoMatch } from "./componet/NoMatch";
+import { ProductCard } from "./componet/ProductCard";
+import { Product } from "./componet/Product";
+import ProductReview from "./componet/ProductReview";
+import { ProductDetail } from "./componet/ProductDetail";
 
 export type EmployeeData = {
   id: number;
@@ -52,14 +57,18 @@ function App() {
       {/* <ForwardRefInput/> */}
       {/* <CrudExample/> */}
       <AuthProvider>
-        {/* <Navbar/> */}
         <Routes>
           <Route path='/' element ={<Login/>} />
           <Route path='dashboard' element ={<ProductListApi/>} />
           <Route path='technician' element ={<TechnicianPage/>} />
           <Route path='chat' element ={<Chat/>} />
+          <Route path= '*' element={<NoMatch/>} />
+      <Route path="/products/:id" element={<Product/>}>
+           <Route index element={<ProductDetail />} />
+          <Route path="details" element={<ProductDetail />} />
+          <Route path="reviews" element={<ProductReview />} />
+        </Route>
         </Routes>
-        {/* <TechnicianPage/> */}
       </AuthProvider>
       
     </>
