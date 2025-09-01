@@ -24,6 +24,15 @@ import { Product } from "./componet/Product";
 import ProductReview from "./componet/ProductReview";
 import { ProductDetail } from "./componet/ProductDetail";
 import SignupForm from "./componet/Signup";
+import { MuiCheckbox } from "./componet/MuiCheckbox";
+import { MuiSwitch } from "./componet/MuiSwitch";
+import { MuiRating } from "./componet/MuiRating";
+import { MuiLayout } from "./componet/MuiLayout";
+import { MuiCard } from "./componet/MuiCard";
+import { MuiAccordian } from "./componet/MuiAccordian";
+import { MuiImageList } from "./componet/MuiImageList";
+import { MuiNavbar } from "./componet/MuiNavbar";
+import { MuiTable } from "./componet/MuiTable";
 
 export type EmployeeData = {
   id: number;
@@ -70,7 +79,16 @@ function App() {
           </Route>
         </Routes>
       </AuthProvider> */}
-      <SignupForm/>
+      {/* <SignupForm/> */}
+      {/* <MuiCheckbox/> */}
+      {/* <MuiSwitch/> */}
+      {/* <MuiRating/> */}
+      {/* <MuiLayout/> */}
+      {/* <MuiCard/> */}
+      {/* <MuiAccordian/> */}
+      {/* <MuiImageList/> */}
+      {/* <MuiNavbar/> */}
+      <MuiTable/>
     </>
 
     // <EmployeeContext.Provider value={empData}>
