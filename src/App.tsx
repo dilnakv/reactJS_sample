@@ -23,6 +23,7 @@ import { ProductCard } from "./componet/ProductCard";
 import { Product } from "./componet/Product";
 import ProductReview from "./componet/ProductReview";
 import { ProductDetail } from "./componet/ProductDetail";
+import SignupForm from "./componet/Signup";
 
 export type EmployeeData = {
   id: number;
@@ -55,7 +56,7 @@ function App() {
       {/* <ProductListUseCallback/> */}
       {/* <ForwardRefInput/> */}
       {/* <CrudExample/> */}
-      <AuthProvider>
+      {/* <AuthProvider>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="dashboard" element={<ProductListApi />} />
@@ -68,7 +69,8 @@ function App() {
             <Route path="reviews" element={<ProductReview />} />
           </Route>
         </Routes>
-      </AuthProvider>
+      </AuthProvider> */}
+      <SignupForm/>
     </>
 
     // <EmployeeContext.Provider value={empData}>
