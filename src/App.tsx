@@ -33,6 +33,12 @@ import { MuiAccordian } from "./componet/MuiAccordian";
 import { MuiImageList } from "./componet/MuiImageList";
 import { MuiNavbar } from "./componet/MuiNavbar";
 import { MuiTable } from "./componet/MuiTable";
+import { MuiAlert } from "./componet/MuiAlert";
+import { MuiSnackbar } from "./componet/MuiSnackbar";
+import { MuiDateTimePicker } from "./componet/MuiDateTimePicker";
+import MuiTabsExample from "./componet/MuiTabs";
+import MuiTabs from "./componet/MuiTabs";
+import { MuiDialog } from "./componet/MuiDialog";
 
 export type EmployeeData = {
   id: number;
@@ -88,7 +94,12 @@ function App() {
       {/* <MuiAccordian/> */}
       {/* <MuiImageList/> */}
       {/* <MuiNavbar/> */}
-      <MuiTable/>
+      {/* <MuiTable/> */}
+      {/* <MuiAlert/> */}
+      {/* <MuiSnackbar/> */}
+      {/* <MuiDateTimePicker/> */}
+      {/* <MuiTabs/> */}
+      <MuiDialog/>
     </>
 
     // <EmployeeContext.Provider value={empData}>
