@@ -39,6 +39,8 @@ import { MuiDateTimePicker } from "./componet/MuiDateTimePicker";
 import MuiTabsExample from "./componet/MuiTabs";
 import MuiTabs from "./componet/MuiTabs";
 import { MuiDialog } from "./componet/MuiDialog";
+import { colors, createTheme, ThemeProvider } from "@mui/material";
+import { MuiResponsiveness } from "./componet/MuiResponsiveness";
 
 export type EmployeeData = {
   id: number;
@@ -47,6 +49,21 @@ export type EmployeeData = {
   department: string;
   team: string;
 };
+
+const theme = createTheme({
+  status: {
+    danger: "#e53e3e",
+  },
+  palette: {
+    secondary: {
+      main: colors.lime[500],
+    },
+    neutral: {
+      main: colors.grey[500],
+    }
+  },
+});
+
 function App() {
   const empData: EmployeeData = {
     id: 101,
@@ -56,52 +73,55 @@ function App() {
     team: "Mobile App",
   };
   return (
-    <>
-      {/* <Greeting name={"Dilna"} />
-      <h2>Product List</h2>
-      <ProductList />
-      <h2>Company Data</h2>
-      <Department />
-      <Counter />
-      <UserProfile /> */}
-      {/* <ProductListApi /> */}
-      {/* <CurrentTime /> */}
-      {/* <Login /> */}
-      {/* <ProductCart/> */}
-      {/* <ProductListUseCallback/> */}
-      {/* <ForwardRefInput/> */}
-      {/* <CrudExample/> */}
-      {/* <AuthProvider>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="dashboard" element={<ProductListApi />} />
-          <Route path="technician" element={<TechnicianPage />} />
-          <Route path="chat" element={<Chat />} />
-          <Route path="*" element={<NoMatch />} />
-          <Route path="/products/:id" element={<Product />}>
-            <Route index element={<ProductDetail />} />
-            <Route path="details" element={<ProductDetail />} />
-            <Route path="reviews" element={<ProductReview />} />
-          </Route>
-        </Routes>
-      </AuthProvider> */}
-      {/* <SignupForm/> */}
-      {/* <MuiCheckbox/> */}
-      {/* <MuiSwitch/> */}
-      {/* <MuiRating/> */}
-      {/* <MuiLayout/> */}
-      {/* <MuiCard/> */}
-      {/* <MuiAccordian/> */}
-      {/* <MuiImageList/> */}
-      {/* <MuiNavbar/> */}
-      {/* <MuiTable/> */}
-      {/* <MuiAlert/> */}
-      {/* <MuiSnackbar/> */}
-      {/* <MuiDateTimePicker/> */}
-      {/* <MuiTabs/> */}
-      <MuiDialog/>
-    </>
-
+    // <>
+    //   {/* <Greeting name={"Dilna"} />
+    //   <h2>Product List</h2>
+    //   <ProductList />
+    //   <h2>Company Data</h2>
+    //   <Department />
+    //   <Counter />
+    //   <UserProfile /> */}
+    //   {/* <ProductListApi /> */}
+    //   {/* <CurrentTime /> */}
+    //   {/* <Login /> */}
+    //   {/* <ProductCart/> */}
+    //   {/* <ProductListUseCallback/> */}
+    //   {/* <ForwardRefInput/> */}
+    //   {/* <CrudExample/> */}
+    //   {/* <AuthProvider>
+    //     <Routes>
+    //       <Route path="/" element={<Login />} />
+    //       <Route path="dashboard" element={<ProductListApi />} />
+    //       <Route path="technician" element={<TechnicianPage />} />
+    //       <Route path="chat" element={<Chat />} />
+    //       <Route path="*" element={<NoMatch />} />
+    //       <Route path="/products/:id" element={<Product />}>
+    //         <Route index element={<ProductDetail />} />
+    //         <Route path="details" element={<ProductDetail />} />
+    //         <Route path="reviews" element={<ProductReview />} />
+    //       </Route>
+    //     </Routes>
+    //   </AuthProvider> */}
+    //   {/* <SignupForm/> */}
+    //   {/* <MuiCheckbox/> */}
+    //   {/* <MuiSwitch/> */}
+    //   {/* <MuiRating/> */}
+    //   {/* <MuiLayout/> */}
+    //   {/* <MuiCard/> */}
+    //   {/* <MuiAccordian/> */}
+    //   {/* <MuiImageList/> */}
+    //   {/* <MuiNavbar/> */}
+    //   {/* <MuiTable/> */}
+    //   {/* <MuiAlert/> */}
+    //   {/* <MuiSnackbar/> */}
+    //   {/* <MuiDateTimePicker/> */}
+    //   {/* <MuiTabs/> */}
+    //   {/* <MuiDialog/> */}
+    //   {/* {<MuiResponsiveness/>} */}
+    // </>
+    <ThemeProvider theme={theme}>
+      <MuiResponsiveness/>
+    </ThemeProvider>
     // <EmployeeContext.Provider value={empData}>
     //   <h2>Company Data</h2>
     //   <Department />
